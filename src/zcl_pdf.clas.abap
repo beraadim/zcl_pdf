@@ -407,14 +407,6 @@ ENDCLASS.
 CLASS ZCL_PDF IMPLEMENTATION.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->ADD_FONT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_POST_SCRIPT_NAME            TYPE        STRING
-* | [--->] IV_FONT_NAME                   TYPE        STRING
-* | [--->] IV_FONT_STYLE                  TYPE        STRING
-* | [--->] IV_ENCODING                    TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD add_font.
   DATA lv_len  TYPE i.
   DATA ls_font TYPE typ_font.
@@ -437,10 +429,6 @@ METHOD add_font.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->ADD_FONTS
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD add_fonts.
 
 
@@ -533,22 +521,11 @@ METHOD add_fonts.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->ADD_PAGE
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method ADD_PAGE.
   me->_add_page( ).
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->ADD_TO_FONT_DICTIONARY
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_FONT_ID                     TYPE        STRING
-* | [--->] IV_FONT_NAME                   TYPE        STRING
-* | [--->] IV_FONT_STYLE                  TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD add_to_font_dictionary.
 
   DATA ls_font_style_map TYPE typ_font_style_map.
@@ -580,10 +557,6 @@ METHOD add_to_font_dictionary.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->BEGIN_PAGE
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method BEGIN_PAGE.
   field-symbols <page> type typ_page.
 
@@ -595,11 +568,6 @@ method BEGIN_PAGE.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->BUILD_DOCUMENT
-* +-------------------------------------------------------------------------------------------------+
-* | [<-()] RV_XSTR                        TYPE        XSTRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD build_document.
   DATA lv_cross_ref_offset TYPE i.
   DATA lv_xstr  TYPE xstring.
@@ -670,13 +638,6 @@ METHOD build_document.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->CONSTRUCTOR
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_ORIENTATION                 TYPE        STRING(optional)
-* | [--->] IV_UNIT                        TYPE        STRING(optional)
-* | [--->] IV_FORMAT                      TYPE        STRING(optional)
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD constructor.
   DATA lv_dec TYPE p LENGTH 10 DECIMALS 2.
   DATA lv_format TYPE string.
@@ -766,12 +727,6 @@ METHOD constructor.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->ESCAPE_TEXT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_TEXT                        TYPE        STRING
-* | [<-()] RV_TEXT                        TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD escape_text.
 
   rv_text = iv_text.
@@ -787,12 +742,6 @@ METHOD escape_text.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->F2
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_VAL                         TYPE        ANY
-* | [<-()] RV_RET                         TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD f2.
   DATA lv_dec TYPE p LENGTH 16 DECIMALS 2.
   lv_dec = iv_val.
@@ -804,12 +753,6 @@ METHOD f2.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->GET_CHAR_WIDTHS
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_WORD                        TYPE        STRING
-* | [<-()] RV_WIDTH_TAB                   TYPE        TYP_CHAR_WIDTHS_TAB
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD GET_CHAR_WIDTHS.
 
   DATA lv_char   TYPE c.
@@ -870,23 +813,11 @@ METHOD GET_CHAR_WIDTHS.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->GET_CURRENT_LINE_SPACE
-* +-------------------------------------------------------------------------------------------------+
-* | [<-()] RV_VAL                         TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method GET_CURRENT_LINE_SPACE.
   rv_val = ( me->gv_active_font_size / me->gv_scale_factor ).
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->GET_FONT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_FONT_NAME                   TYPE        STRING(optional)
-* | [--->] IV_FONT_STYLE                  TYPE        STRING(optional)
-* | [<-()] RV_FONT_ID                     TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD get_font.
   DATA lv_font_name  TYPE string.
   DATA lv_font_style TYPE string.
@@ -914,13 +845,6 @@ METHOD get_font.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->GET_FONT_FROM_DICTIONARY
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_FONT_NAME                   TYPE        STRING
-* | [--->] IV_FONT_STYLE                  TYPE        STRING
-* | [<-()] RV_FONT_ID                     TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD GET_FONT_FROM_DICTIONARY.
 
   DATA ls_font_style_map TYPE typ_font_style_map.
@@ -941,11 +865,6 @@ METHOD GET_FONT_FROM_DICTIONARY.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->GET_FONT_METRIC_DATA
-* +-------------------------------------------------------------------------------------------------+
-* | [<-()] RV_DATA                        TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method GET_FONT_METRIC_DATA.
 
 *  Simple font metric data - gzipped and base64 encoded. This allows us to store data without tables
@@ -1768,23 +1687,11 @@ method GET_FONT_METRIC_DATA.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->GET_FONT_SIZE
-* +-------------------------------------------------------------------------------------------------+
-* | [<-()] RV_FONT_SIZE                   TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method GET_FONT_SIZE.
   rv_font_size = me->gv_active_font_size.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->GET_MAX_FONT_SIZE_FOR_WIDTH
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_TEXT                        TYPE        STRING
-* | [--->] IV_MAX_WIDTH                   TYPE        I
-* | [<-()] RV_SIZE                        TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD get_max_font_size_for_width.
   DATA lv_cur_font_size TYPE i.
   DATA lv_size          TYPE i VALUE 1.
@@ -1819,11 +1726,6 @@ METHOD get_max_font_size_for_width.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->GET_PAGE_HEIGHT
-* +-------------------------------------------------------------------------------------------------+
-* | [<-()] RV_VALUE                       TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD get_page_height.
 
   rv_value = me->gv_page_height.
@@ -1831,12 +1733,6 @@ METHOD get_page_height.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->GET_SAP_ENCODER
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_ENCODING                    TYPE        STRING
-* | [<-()] RV_SAP_ENCODING                TYPE        TYP_ENCODING_MAP
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method GET_SAP_ENCODER.
   data lv_encoding type string.
   field-symbols <encoding> type typ_encoding_map.
@@ -1855,11 +1751,6 @@ method GET_SAP_ENCODER.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->GET_SIMPLE_FONT_METRIC
-* +-------------------------------------------------------------------------------------------------+
-* | [<-()] RR_SIMPLE_FM                   TYPE REF TO DATA
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD get_simple_font_metric.
   DATA lv_xstr type xstring.
 
@@ -1881,12 +1772,6 @@ METHOD get_simple_font_metric.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->GET_STRING_WIDTH
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_STR                         TYPE        STRING
-* | [<-()] RV_LEN                         TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method GET_STRING_WIDTH.
     DATA lt_char_widths   TYPE typ_char_widths_tab.
 
@@ -1896,12 +1781,6 @@ method GET_STRING_WIDTH.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->GET_STYLE
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_STYLE                       TYPE        STRING
-* | [<-()] RV_STYLE                       TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD get_style.
   CASE iv_style.
     WHEN 'F'.
@@ -1914,12 +1793,6 @@ METHOD get_style.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->GET_WORD_LENGTH
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IT_CHAR_WIDTHS                 TYPE        TYP_CHAR_WIDTHS_TAB
-* | [<-()] RV_LENGTH                      TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method GET_WORD_LENGTH.
 
   field-symbols <lv_width> type i.
@@ -1931,10 +1804,6 @@ method GET_WORD_LENGTH.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->INITIALIZE_ENCODING_MAP
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method INITIALIZE_ENCODING_MAP.
   DATA ls_encoding type typ_encoding_map.
 
@@ -1946,10 +1815,6 @@ method INITIALIZE_ENCODING_MAP.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->INITIALIZE_FONT_METRIC
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD initialize_font_metric.
   DATA lv_xstr             TYPE xstring.
   DATA lv_font_metric_data TYPE string.
@@ -1970,10 +1835,6 @@ METHOD initialize_font_metric.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->INITIALIZE_PAGE_FORMATS
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method INITIALIZE_PAGE_FORMATS.
   field-symbols <page_format> type typ_page_format.
 
@@ -2007,13 +1868,6 @@ method INITIALIZE_PAGE_FORMATS.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZCL_PDF->JOIN_STRING_TAB
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] LT_STR_TAB                     TYPE        STANDARD TABLE
-* | [--->] LV_DELIMETER                   TYPE        ANY
-* | [<-()] RV_STR                         TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD join_string_tab.
 
   TYPES ltyp_str_tab TYPE TABLE OF string WITH DEFAULT KEY.
@@ -2030,22 +1884,11 @@ METHOD join_string_tab.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->MEASURE_LINES_HEIGHT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IT_LINES                       TYPE        ZCL_PDF=>TYP_TEXT_LINES
-* | [<-()] RV_LEN                         TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method MEASURE_LINES_HEIGHT.
   rv_len = lines( it_lines ) * me->get_current_line_space( ).
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->NEW_OBJECT
-* +-------------------------------------------------------------------------------------------------+
-* | [<-()] RV_OBJ_NO                      TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method NEW_OBJECT.
   field-symbols <new_i> type i.
 
@@ -2060,12 +1903,6 @@ method NEW_OBJECT.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->OUT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_XSTR                        TYPE        XSTRING
-* | [--->] IV_NEW_LINE                    TYPE        ABAP_BOOL (default =ABAP_TRUE)
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD out.
 
   FIELD-SYMBOLS <page> TYPE typ_page.
@@ -2095,30 +1932,15 @@ METHOD out.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->OUTPUT
-* +-------------------------------------------------------------------------------------------------+
-* | [<-()] RV_XSTR                        TYPE        XSTRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD output.
   rv_xstr = me->build_document( ).
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PDF_ESCAPE
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_STR                         TYPE        STRING
-* | [<-()] RV_STR                         TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method PDF_ESCAPE.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_CATALOG
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD put_catalog.
 
   me->out( xs( |/Type /Catalog| ) ).
@@ -2134,11 +1956,6 @@ METHOD put_catalog.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_FONT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_FONT                        TYPE        TYP_FONT
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD put_font.
   field-symbols <font> type typ_font.
 
@@ -2152,10 +1969,6 @@ METHOD put_font.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_FONTS
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD put_fonts.
   FIELD-SYMBOLS <font> TYPE typ_font.
 
@@ -2166,10 +1979,6 @@ METHOD put_fonts.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_INFO
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD put_info.
   DATA lv_timestamp     type timestamp.
   DATA lv_timestamp_str type string.
@@ -2203,10 +2012,6 @@ METHOD put_info.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_PAGES
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD put_pages.
   DATA lv_wpt  TYPE p LENGTH 16 DECIMALS 2.
   DATA lv_hpt  TYPE p LENGTH 16 DECIMALS 2.
@@ -2282,10 +2087,6 @@ METHOD put_pages.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_RESOURCES
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD put_resources.
   FIELD-SYMBOLS <i> TYPE i.
 
@@ -2306,10 +2107,6 @@ METHOD put_resources.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_RESOURCE_DICTIONARY
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD PUT_RESOURCE_DICTIONARY.
   FIELD-SYMBOLS <font> TYPE typ_font.
 
@@ -2328,11 +2125,6 @@ METHOD PUT_RESOURCE_DICTIONARY.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_STREAM
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_XSTR                        TYPE        XSTRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method PUT_STREAM.
 
   me->out( xs( |stream| ) ).
@@ -2342,10 +2134,6 @@ method PUT_STREAM.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_TRAILER
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD put_trailer.
   me->out( xs( |/Size { gv_object_number + 1 }| ) ).
   me->out( xs( |/Root { gv_object_number } 0 R| ) ).
@@ -2353,24 +2141,11 @@ METHOD put_trailer.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->PUT_XOBJECT_DICT
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD put_xobject_dict.
   RAISE EVENT evt_put_xobject_dict.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->RECT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_X                           TYPE        I
-* | [--->] IV_Y                           TYPE        I
-* | [--->] IV_WIDTH                       TYPE        I
-* | [--->] IV_HEIGTH                      TYPE        I
-* | [--->] IV_STYLE                       TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method RECT.
   data lv_op type string.
 
@@ -2384,35 +2159,16 @@ method RECT.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->SET_FONT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_FONT_NAME                   TYPE        STRING
-* | [--->] IV_FONT_STYLE                  TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD set_font.
   me->gv_active_font_id = me->get_font_from_dictionary( iv_font_name = iv_font_name iv_font_style = iv_font_style ).
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->SET_FONT_SIZE
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_SIZE                        TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method SET_FONT_SIZE.
   me->gv_active_font_size = iv_size.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->SHRINK_FONT_TO_FIT_BOX
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_TEXT                        TYPE        STRING
-* | [--->] IV_MAX_WIDTH                   TYPE        I
-* | [--->] IV_MAX_HEIGHT                  TYPE        I
-* | [<-()] RV_FONT_SIZE                   TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD SHRINK_FONT_TO_FIT_BOX.
   DATA lv_cur_font_size TYPE i.
   DATA lv_cur_height    TYPE i.
@@ -2437,15 +2193,6 @@ METHOD SHRINK_FONT_TO_FIT_BOX.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->SPLIT_LONG_WORD
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_WORD                        TYPE        STRING
-* | [--->] IT_CHAR_WIDTHS                 TYPE        TYP_CHAR_WIDTHS_TAB
-* | [--->] IV_CUR_WIDTH                   TYPE        I
-* | [--->] IV_MAXLEN                      TYPE        I
-* | [<-()] RT_LINES                       TYPE        TYP_TEXT_LINES
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD split_long_word.
   DATA lv_work      TYPE string.
   DATA lv_cur_width TYPE i.
@@ -2477,13 +2224,6 @@ METHOD split_long_word.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->SPLIT_PARAGRAPH_TO_LINES
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_STRING                      TYPE        STRING
-* | [--->] IV_MAXLEN                      TYPE        I
-* | [<-()] RT_LINES                       TYPE        TYP_TEXT_LINES
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD split_paragraph_to_lines.
   DATA lt_words         TYPE STANDARD TABLE OF string WITH DEFAULT KEY.
   DATA lt_paragraphs    TYPE STANDARD TABLE OF string WITH DEFAULT KEY.
@@ -2578,14 +2318,6 @@ METHOD split_paragraph_to_lines.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Private Method ZCL_PDF=>STRING_PAD_LEFT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_STR                         TYPE        STRING
-* | [--->] IV_PAD_CHAR                    TYPE        C
-* | [--->] IV_LEN                         TYPE        I
-* | [<-()] RV_RET                         TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD STRING_PAD_LEFT.
   DATA l_len     TYPE i.
   DATA l_num_chars TYPE i.
@@ -2603,14 +2335,6 @@ METHOD STRING_PAD_LEFT.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->TEXT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_TEXT                        TYPE        STRING
-* | [--->] IV_X                           TYPE        ANY
-* | [--->] IV_Y                           TYPE        ANY
-* | [<-()] RV_Y                           TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD text.
   DATA ls_encoder       TYPE typ_encoding_map.
   DATA lt_str           TYPE TABLE OF string.
@@ -2677,17 +2401,6 @@ METHOD text.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->TEXT_BOX
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_TEXT                        TYPE        STRING
-* | [--->] IV_X                           TYPE        I
-* | [--->] IV_Y                           TYPE        I
-* | [--->] IV_WIDTH                       TYPE        I
-* | [--->] IV_HEIGHT                      TYPE        I
-* | [--->] IV_HOR_ALIGN                   TYPE        I (default =CONST_HOR_TEXT_ALIGN_LEFT)
-* | [<-()] RV_END_Y                       TYPE        I
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD text_box.
 
   DATA lt_lines          TYPE zcl_pdf=>typ_text_lines.
@@ -2721,11 +2434,6 @@ METHOD text_box.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZCL_PDF->TO_8BIT_STREAM
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_TEXT                        TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD to_8bit_stream.
 
   DATA lv_i TYPE i.
@@ -2739,35 +2447,17 @@ METHOD to_8bit_stream.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZCL_PDF->TO_STRING
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_VALUE                       TYPE        ANY
-* | [<-()] RV_STR                         TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method TO_STRING.
   rv_str = iv_value.
   condense rv_str.
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Public Method ZCL_PDF->WRITE
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_STR                         TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method WRITE.
   me->out( xs( iv_str ) ).
 endmethod.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Private Method ZCL_PDF->XS
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] IV_STR                         TYPE        STRING
-* | [--->] IV_ENCODING                    TYPE        STRING (default ='WinAnsiEncoding')
-* | [<-()] RV_XSTR                        TYPE        XSTRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 METHOD xs.
   DATA ls_sap_encoder TYPE typ_encoding_map.
   DATA lv_encoding TYPE string.
@@ -2784,10 +2474,6 @@ METHOD xs.
 ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Instance Protected Method ZCL_PDF->_ADD_PAGE
-* +-------------------------------------------------------------------------------------------------+
-* +--------------------------------------------------------------------------------------</SIGNATURE>
 method _ADD_PAGE.
 
   data lv_line_width type p length 16 decimals 2.
