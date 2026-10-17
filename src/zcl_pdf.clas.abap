@@ -1713,6 +1713,11 @@ METHOD get_max_font_size_for_width.
   DO.
     me->set_font_size( lv_size ).
     lv_measure = me->get_string_width( iv_text ).
+* Text without measurable glyphs never gets wider - stop instead of looping forever
+    IF lv_measure <= 0.
+      rv_size = lv_cur_font_size.
+      EXIT.
+    ENDIF.
     IF lv_measure > lv_max_width.
       rv_size = lv_size - 1.
       EXIT.
@@ -2417,6 +2422,8 @@ METHOD text_box.
         lv_x = iv_x.
       when CONST_HOR_TEXT_ALIGN_MIDDLE.
         lv_x = iv_x + ( ( iv_width / 2 ) - ( ( get_string_width( <lv_str> ) / ( me->gv_scale_factor * 1000  ) ) / 2 ) ).
+      when CONST_HOR_TEXT_ALIGN_RIGHT.
+        lv_x = iv_x + iv_width - ( get_string_width( <lv_str> ) / ( me->gv_scale_factor * 1000 ) ).
     ENDCASE.
 
     me->text( iv_text = <lv_str> iv_x = lv_x iv_y = lv_y ) .
